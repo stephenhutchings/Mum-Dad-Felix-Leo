@@ -1,0 +1,60 @@
+#page-01
+  color: #fff
+  background-color: #66be8a
+
+#page-01,
+#page-10
+  .p2
+    width: 80%
+
+    .char-9,
+    .char-11,
+    .char-13,
+    .char-15,
+    .char-17,
+    .char-18,
+    .char-26,
+    .char-28
+      height: 1em
+      font-size: 1.5em
+      margin: 0 0.2em
+      padding: 0
+
+      &:after
+        display: block
+        position: absolute
+        line-height: 1em
+        font-size: 0.2em
+        font-family: "superclarendon"
+        font-weight: normal
+        color: #222
+        text-shadow: none
+        width: 100%
+
+    .char-9,
+    .char-11,
+    .char-13,
+    .char-15,
+    .char-17,
+      margin: 0 0.2em 0.4em
+      padding: 0
+
+    .char-9:after
+      content: "eff"
+
+    .char-11:after,
+    .char-26:after
+      content: "eeh"
+
+    .char-13:after,
+    .char-18:after
+      content: "ell"
+
+    .char-15:after
+      content: "aye"
+
+    .char-17:after
+      content: "ecks"
+
+    .char-28:after
+      content: "oh"

@@ -1,0 +1,44 @@
+#content
+  position: absolute
+  top: 0
+  left: 0
+  right: 0
+  bottom: 0
+  transition: transform 300ms
+
+  #inbound,
+  #outbound
+    position: absolute
+    top: 0
+    left: 0
+    right: 0
+    bottom: 0
+    background-color: #fff
+    z-index: 1
+
+  #inbound
+    z-index: 10
+    opacity: 0
+
+.display #content
+  #inbound
+    opacity: 1
+    transition: opacity 600ms
+
+#content
+  &:after
+    content: ""
+    position: absolute
+    height: 21px
+    width: 100%
+    top: 0
+    left: 0
+    background-color: transparentize(#222, 0.8)
+    z-index: 100
+    transition: background-color 300ms
+
+.dark.details-active #content:after
+  background-color: transparentize(#222, 0.9)
+
+.ios-lt-7 #content:after
+  content: none
