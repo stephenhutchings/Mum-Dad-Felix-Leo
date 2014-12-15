@@ -8,6 +8,12 @@ exports.config =
         global_defs:
           DEBUG: false
 
+    pleeease:
+      optimizers:
+        import: true
+        mqpacker: true
+        minifier: true
+
   paths:
     public: "../www"
 
