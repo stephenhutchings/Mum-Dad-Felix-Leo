@@ -68,7 +68,7 @@ module.exports =
       toggleActiveState(false)
 
     onEnd = ->
-      return unless touch?
+      return unless touch? and touch.el?
 
       touch.el.dispatchEvent(tapEvent) if nearEnough
       touch.el.focus() if touch.el.nodeName.match inputRegEx

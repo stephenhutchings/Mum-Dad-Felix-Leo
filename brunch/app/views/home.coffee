@@ -3,7 +3,7 @@ app = require "app"
 # Templates
 template = require "./templates/home"
 
-class HomeView extends Backbone.View
+class HomeView extends Backbone.NativeView
 
   id: "home-view"
 
@@ -16,6 +16,9 @@ class HomeView extends Backbone.View
 
   render: ->
     @el.innerHTML = template()
+
+  display: (callback) ->
+    callback()
 
   preventDefault: (e) ->
     e.preventDefault()

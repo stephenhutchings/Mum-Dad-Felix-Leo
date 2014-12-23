@@ -12,7 +12,7 @@ content = inbound = outbound = null
 
 isTouch = "ontouchstart" of window
 
-class MainView extends Backbone.View
+class MainView extends Backbone.NativeView
 
   currentClass: "none"
   views: {}

@@ -5,7 +5,7 @@ player = require "lib/audio"
 # Templates
 template = require "./templates/book"
 
-class BookView extends Backbone.View
+class BookView extends Backbone.NativeView
 
   id: "book-view"
 
@@ -56,6 +56,11 @@ class BookView extends Backbone.View
       ), 100
     ), 200
 
+  display: (callback) ->
+    # @scrollView?.refresh()
+    @onScrollEnd(true)
+    callback()
+
   scrollViewReady: ->
     @scrollView.on "scrollEnd", => @onScrollEnd()
     @scrollView.on "scrollStart", => @onScrollStart()
@@ -83,7 +88,6 @@ class BookView extends Backbone.View
         char.style[prefix "transform"] = ""
 
       @pages.item(i).querySelector(".text")?.offsetWidth
-      @pages.item(i).querySelector(".char")?.offsetWidth
 
     @pages.item(i).classList.add "active"
 
@@ -93,6 +97,7 @@ class BookView extends Backbone.View
 
   startChar: (e) ->
     @canRotate = true
+    e.preventDefault()
     e.stopImmediatePropagation()
     @moveChar(e)
 
@@ -103,6 +108,8 @@ class BookView extends Backbone.View
 
     tar = document.elementFromPoint(e.touches[0].pageX, e.touches[0].pageY)
     return unless tar?.classList.contains "char"
+
+    @scrollView.disable()
 
     rotation = _.random(-12, 12) - 360 * _.random(-2, 2)
     transitionDelay = tar.style[prefix "transitionDelay"]
@@ -125,6 +132,7 @@ class BookView extends Backbone.View
 
   endChar: (e) ->
     @canRotate = false
+    @scrollView.enable()
 
   wrapLetters: ->
     for el, i in @el.querySelectorAll("p")

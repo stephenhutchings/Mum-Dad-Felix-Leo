@@ -35,6 +35,7 @@ exports.config =
           "vendor/js/lodash.compat.js"
           "vendor/js/deferred.js"
           "vendor/js/exo.js"
+          "vendor/js/backbone.nativeview.js"
         ]
 
     stylesheets:

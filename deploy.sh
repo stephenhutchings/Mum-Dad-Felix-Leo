@@ -24,6 +24,12 @@ while : ; do
   fi
 done
 
+function brunch_build {
+  cd brunch
+  brunch b -P
+  cd ../
+}
+
 #echo expanded commands as they are executed (for debugging)
 function enable_expanded_output {
   if [ $verbose ]; then
@@ -39,6 +45,8 @@ function disable_expanded_output {
     set -o verbose
   fi
 }
+
+brunch_build
 
 enable_expanded_output
 
