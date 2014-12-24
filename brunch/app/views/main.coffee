@@ -31,6 +31,7 @@ class MainView extends Backbone.NativeView
 
     @classForDeviceVersion()
     @classForDeviceSize()
+    @onOrientationChange()
 
   classForDeviceVersion: ->
     @el.classList.toggle("ios-lt-7", window.device?.version.match(/[\d]+/) < 7)
@@ -98,6 +99,9 @@ class MainView extends Backbone.NativeView
     outbound.removeChild(outbound.lastChild) while (outbound.lastChild)
     outbound.appendChild @currentView.el
 
+    window.addEventListener "orientationchange", =>
+      @onOrientationChange()
+
   afterDisplay: (callback) ->
     window.clearTimeout @afterTimeout
     @afterTimeout = window.setTimeout (=>
@@ -121,5 +125,9 @@ class MainView extends Backbone.NativeView
     inbound = _inb
     outbound = _otb
     outbound.removeChild(outbound.lastChild) while (outbound.lastChild)
+
+  onOrientationChange: ->
+    @el.classList.toggle("landscape", window.orientation % 180 isnt 0)
+    @el.classList.toggle("portrait", window.orientation % 180 is 0)
 
 module.exports = MainView

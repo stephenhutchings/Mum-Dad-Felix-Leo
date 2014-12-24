@@ -19,7 +19,6 @@ class BookView extends Backbone.NativeView
     callback()
 
     window.addEventListener "orientationchange", =>
-      @onOrientationChange()
       @sizeContent()
       @scrollView?.refresh()
       @onScrollEnd(true)
@@ -182,10 +181,6 @@ class BookView extends Backbone.NativeView
       page.classList.add("hidden")
 
     @el.querySelector("#pages").style.width = width * @pages.length + "px"
-
-  onOrientationChange: (force) ->
-    @el.classList.toggle("landscape", window.orientation % 180 isnt 0)
-    @el.classList.toggle("portrait", window.orientation % 180 is 0)
 
   stopListening: ->
     super

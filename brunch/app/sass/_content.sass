@@ -6,19 +6,19 @@
   bottom: 0
   transition: transform 300ms
 
-  #inbound,
-  #outbound
-    position: absolute
-    top: 0
-    left: 0
-    right: 0
-    bottom: 0
-    background-color: #fff
-    z-index: 1
+#inbound,
+#outbound
+  position: absolute
+  top: 0
+  left: 0
+  right: 0
+  bottom: 0
+  background-color: #fff
+  z-index: 1
 
-  #inbound
-    z-index: 10
-    opacity: 0
+#inbound
+  z-index: 10
+  opacity: 0
 
 .display #content
   #inbound
@@ -42,3 +42,21 @@
 
 .ios-lt-7 #content:after
   content: none
+
+.portrait
+  .view
+    opacity: 0 !important
+
+  #inbound
+    background-color: #2B337E
+
+    &:before
+      content: "Landscape is best for this book!"
+      font-size: 44px
+      line-height: 1.1em
+      position: absolute
+      width: 260px
+      margin: -72px -130px
+      top: 50%
+      left: 50%
+      text-align: center
