@@ -58,8 +58,11 @@ class BookView extends Backbone.NativeView
   display: (callback, params) ->
     @currentPage = params.page
     @scrollView.goToPage(params.page, 0, 0)
-    @onScrollEnd(true)
     callback()
+
+    window.setTimeout (=>
+      @onScrollEnd(true)
+    ), 300
 
   scrollViewReady: ->
     @scrollView.on "scrollEnd", => @onScrollEnd()
@@ -77,7 +80,7 @@ class BookView extends Backbone.NativeView
 
     if force is true or i isnt @currentPage
       @currentPage = i
-      app.router.navigate("page/#{i}")
+      app.router.navigate("page/#{i + 1}")
 
       for page, j in @pages
         page.classList.remove "active"
@@ -119,8 +122,8 @@ class BookView extends Backbone.NativeView
     tar.style[prefix "transform"] =
       "translate3d(0, 0, 0) scale(1.2) rotate(#{rotation}deg)"
 
-    if tar.dataset.sound
-      player tar.dataset.sound
+    # if tar.dataset.sound
+    #   player tar.dataset.sound
 
     window.setTimeout (->
       tar.style[prefix "pointer-events"] = ""

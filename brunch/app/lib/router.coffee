@@ -22,7 +22,7 @@ class AppRouter extends Backbone.Router
     @mainView.display("home")
 
   book: (page) ->
-    @mainView.display("book", page: page or 0)
+    @mainView.display("book", page: (page - 1) or 0)
 
   default: ->
     @navigate "home", true
