@@ -56,8 +56,9 @@ class BookView extends Backbone.NativeView
       ), 100
     ), 200
 
-  display: (callback) ->
-    # @scrollView?.refresh()
+  display: (callback, params) ->
+    @currentPage = params.page
+    @scrollView.goToPage(params.page, 0, 0)
     @onScrollEnd(true)
     callback()
 

@@ -88,7 +88,7 @@ class MainView extends Backbone.NativeView
 
     if @views[child] and @views[child].cid isnt @currentView.cid
       @currentView = @views[child]
-      @currentView.display done
+      @currentView.display done, params
     else
       @currentView = new View params, done
       @currentView.el.classList.add("view")
